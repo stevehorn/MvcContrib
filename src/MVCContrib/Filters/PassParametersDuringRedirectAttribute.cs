@@ -26,7 +26,8 @@ namespace MvcContrib.Filters
         {
             base.OnActionExecuting(filterContext);
 
-            LoadParameterValuesFromTempData(filterContext);
+            if(filterContext.HttpContext.Request.RequestType.ToUpper() == "GET")
+                LoadParameterValuesFromTempData(filterContext);
         }
 
         /// <summary>
